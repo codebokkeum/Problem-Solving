@@ -20,7 +20,7 @@ for _ in 0..<T {
   
   for i in 0..<map[0].count {
     for j in 0..<map.count {
-      if map[j][i] == 1 {
+      if map[j][i] == 1 && !visited[j][i] {
         dfs(i, j, &map, &visited)
         count += 1
       }
@@ -42,7 +42,6 @@ func dfs(_ x: Int, _ y: Int, _ map: inout [[Int]], _ visited: inout [[Bool]]) {
     guard map[ny][nx] == 1 else { continue }
     
     visited[ny][nx] = true
-    map[ny][nx] = 0
     dfs(nx, ny, &map, &visited)
   }
 }
